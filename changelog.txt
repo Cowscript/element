@@ -3,6 +3,8 @@
   Append function 'parent' to allow to get the parent node
   Append a config system to handle specfic siturasion
   Append option on.click.cursor to set cursor properly when you call elemen.on("click", function(){});
+  Append 'length' to element. Now you can easy get how many nodes there exists.
+  Append classExists in EM so now you can test if there exists a class in the element.
 --Change
   element.append now accept string as argument. It will convert it to text node and append it to the dom
 ---- V1.1 ----

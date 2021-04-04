@@ -46,6 +46,11 @@ EM.prototype.isVisible = function(){
 };
 
 EM.prototype.attribute = function(...arg){
+  if(arg.length == 1 && typeof arg[0] == "object"){
+    for(key in arg[0])
+      this.attribute(key, arg[0][key]);
+    return;
+  }
   if(arg.length == 2)
     this.dom.setAttribute(arg[0], arg[1]);
   
@@ -70,6 +75,10 @@ EM.prototype.addClass = function(c){
 
 EM.prototype.removeClass = function(c){
   this.dom.classList.remove(c);
+};
+
+EM.prototype.classExists = function(n){
+  return this.dom.classList.contains(n);  
 };
 
 EM.prototype.append = function(dom){
@@ -151,6 +160,10 @@ const element = (function(){
               callback.apply(new EM(dom[i]));
             }
           };
+        }
+          
+        if(name == "length"){
+          return dom.length;   
         }
       },
       getPrototypeOf : function(){
